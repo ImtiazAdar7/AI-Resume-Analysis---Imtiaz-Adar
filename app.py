@@ -6,6 +6,7 @@
 import streamlit as st
 from pypdf import PdfReader
 import json
+import os
 from google import genai
 from reportlab.platypus import (
     SimpleDocTemplate,
@@ -68,7 +69,7 @@ st.write("Upload your resume in PDF format and get the feedback.")
 uploaded_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
 
 # Gemini API Key
-api_key = st.secrets["GEMINI_API_KEY"]
+api_key = os.environ["GEMINI_API_KEY"]
 
 client = genai.Client(api_key=api_key)
 
